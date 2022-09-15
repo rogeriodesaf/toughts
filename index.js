@@ -8,16 +8,45 @@ const app = express()
 
 const conn = require('./db/conn')
 
+//template engine
+app.engine('handlebars', exphbs.engine())
+app.set('view engine', 'handlebars')
+
+//receber resposta do body
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+//sessions midleawares
+app.use(
+    session({
+        name: 'session',
+        secret: "nosso_secret",
+        resave: false,
+        saveUninitialized: false,
+        store: new FileStore({
+            logFn: function () { },
+            path: require('path').join(require('os').tmpdir(), 'sessions'),
+        }),
+        cookie: {
+            secure: false,
+            maxAge: 360000,
+            expires: new Date(Date.now() + 360000),
+            httpOnly: true
+        }
+
+    }),
+)
+
+// flash message
 
 
 
 
-
-conn 
+conn
     .sync()
-    .then(()=>{
+    .then(() => {
         app.listen(5000)
     })
-    .catch((err)=>{
-        console.log('deu erro'+err)
+    .catch((err) => {
+        console.log('deu erro' + err)
     })
