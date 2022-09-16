@@ -62,7 +62,8 @@ app.use((req,res,next)=>{
 
 
 conn
-    .sync({force:true})
+    .sync()
+   // .sync({force:true})
     .then(() => {
         app.listen(5000)
     })
