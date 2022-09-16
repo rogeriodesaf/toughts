@@ -8,6 +8,12 @@ const app = express()
 
 const conn = require('./db/conn')
 
+//models
+const Tought = require('./models/Tought')
+const User   = require('./models/User')
+
+
+
 //template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -54,8 +60,9 @@ app.use((req,res,next)=>{
 
 
 
+
 conn
-    .sync()
+    .sync({force:true})
     .then(() => {
         app.listen(5000)
     })
