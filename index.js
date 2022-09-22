@@ -13,6 +13,7 @@ const Tought = require("./models/Tought");
 
 // routes
 const toughtsRoutes = require("./routes/toughtsRoutes");
+const authRoutes    = require('./routes/authRoutes')
 
 const ToughController = require("./controllers/ToughtController");
 
@@ -64,7 +65,9 @@ app.use((req, res, next) => {
   next();
 });
 
+//routes
 app.use("/toughts", toughtsRoutes);
+app.use('/',authRoutes)
 
 app.get("/", ToughController.showToughts);
 
