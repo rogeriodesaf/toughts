@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
+const session = require('express-session')
 
 module.exports = class AuthController {
     static login(req, res) {
@@ -49,5 +50,9 @@ module.exports = class AuthController {
         } catch (error) {
             console.log(error)
         }
+    }
+    static logout(req,res){
+        req.session.destroy()
+        res.redirect('/login')
     }
 }
