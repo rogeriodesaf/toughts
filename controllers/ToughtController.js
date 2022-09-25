@@ -5,4 +5,8 @@ module.exports = class ToughtController{
     static showToughts(req,res){
         res.render('toughts/home')
     }
+
+    static  dashboard(req,res){
+        res.render('toughts/dashboard')
+    }
 }

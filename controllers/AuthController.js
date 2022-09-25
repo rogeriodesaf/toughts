@@ -19,6 +19,7 @@ module.exports = class AuthController {
             res.render('auth/login')
             return
         }
+        
         //check match password
         const checkMail = bcrypt.compareSync(password,user.password)
         if(!checkMail){
