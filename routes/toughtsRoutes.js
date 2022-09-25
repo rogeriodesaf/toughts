@@ -6,6 +6,7 @@ const ToughtController = require('../controllers/ToughtController')
 const checkAuth = require('../helpers/auth').checkAuth
 
 router.get('/add',checkAuth,ToughtController.createToughts)
+router.post('/add',checkAuth,ToughtController.createToughtsPost)
 router.get('/',ToughtController.showToughts)
 router.get('/dashboard',checkAuth,ToughtController.dashboard)
 
