@@ -4,4 +4,9 @@
         <a href="/toughts/add" class="btn">Criar Pensamento</a>
     </div>
     <h3>Seus pensamentos</h3>
+   {{#each tought}}
+        <ul>
+            <li>{{title}}</li>
+        </ul>
+   {{/each}}
 </div>
