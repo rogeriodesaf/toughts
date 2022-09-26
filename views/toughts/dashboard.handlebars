@@ -4,9 +4,19 @@
         <a href="/toughts/add" class="btn">Criar Pensamento</a>
     </div>
     <h3>Seus pensamentos</h3>
-   {{#each tought}}
-        <ul>
-            <li>{{title}}</li>
-        </ul>
-   {{/each}}
+    {{#each tought}}
+    <ul>
+        <li>
+            <span class="label"> {{this.title}} </span>
+            <span class="action">
+                <a href="/toughts/edit" class="btn">Editar</a>
+                <form action="/tougths/delete" class="action">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Excluir" class="btn">
+                </form>
+            </span>
+
+        </li>
+    </ul>
+    {{/each}}
 </div>

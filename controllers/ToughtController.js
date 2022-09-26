@@ -11,7 +11,7 @@ module.exports = class ToughtController {
 
         const user = await User.findOne({
             where:{
-                id: userId
+                id: userId,
             },
             include :Tought,
             plain :true,

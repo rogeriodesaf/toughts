@@ -153,3 +153,50 @@ color: #f6982d;
     max-width: 30%;
     margin-top: 1.5em;
 }
+
+/*Dashboard*/
+.dashboard h3{
+    margin-bottom: 1.5em;
+}
+
+.title-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.title-container h2{
+   border-left: 4px solid #f6982d;
+   padding: 10px;
+}
+
+.dashboard ul{
+    list-style: none;
+}
+
+.dashboard li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #f6982d;
+   
+    
+}
+
+.dashboard .label{
+    font-weight: bold;
+    color: #f6982d;
+    margin-right: 2em;
+
+}
+
+.dashboard .action{
+    display: flex;
+}
+
+.dashboard .action .btn{
+    color: #fff;
+    border-color: #fff;
+    margin: 0 0.5em;
+}
