@@ -6,23 +6,23 @@ module.exports = class ToughtController {
         res.render('toughts/home')
     }
 
-    static   async dashboard(req, res) {
+    static async dashboard(req, res) {
         const userId = req.session.userid
 
         const user = await User.findOne({
-            where:{
+            where: {
                 id: userId,
             },
-            include :Tought,
-            plain :true,
+            include: Tought,
+            plain: true,
         })
 
-        const tought = user.Toughts.map((result)=>result.dataValues)
+        const tought = user.Toughts.map((result) => result.dataValues)
 
-        res.render('toughts/dashboard',{tought})
+        res.render('toughts/dashboard', { tought })
     }
 
-    static createToughts(req,res){
+    static createToughts(req, res) {
         res.render('toughts/create')
     }
 
@@ -41,5 +41,19 @@ module.exports = class ToughtController {
             console.log(error)
         }
 
+    }
+    static async removeTought(req, res) {
+        const id = req.body.id
+        const userId = req.session.userid
+
+        try {
+            await Tought.destroy({ where: { id: id, userId: userId } })
+            req.flash('message', 'Pensamento removido com sucesso')
+            req.session.save(() => {
+                res.redirect('/toughts/dashboard')
+            })
+        } catch (error) {
+            console.log(err)
+        }
     }
 }
