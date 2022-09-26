@@ -4,6 +4,7 @@
         <a href="/toughts/add" class="btn">Criar Pensamento</a>
     </div>
     <h3>Seus pensamentos</h3>
+
     {{#each tought}}
     <ul>
         <li>
@@ -19,4 +20,8 @@
         </li>
     </ul>
     {{/each}}
+    {{#if emptyToughts}}
+    <p>Você está sem pensamentos registrados. Registre um <a href="/toughts/add">aqui!</a></p>
+    {{/if}}
+
 </div>

@@ -17,9 +17,14 @@ module.exports = class ToughtController {
             plain: true,
         })
 
+       
         const tought = user.Toughts.map((result) => result.dataValues)
+        let emptyToughts = false
+        if(tought.length === 0){
+            emptyToughts = true
+        }
 
-        res.render('toughts/dashboard', { tought })
+        res.render('toughts/dashboard', { tought,emptyToughts })
     }
 
     static createToughts(req, res) {
