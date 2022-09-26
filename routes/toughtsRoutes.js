@@ -11,6 +11,7 @@ router.get('/',ToughtController.showToughts)
 router.get('/dashboard',checkAuth,ToughtController.dashboard)
 router.post('/remove',checkAuth,ToughtController.removeTought)
 router.get('/edit/:id',checkAuth,ToughtController.updateToughts)
+router.post('/edit',checkAuth,ToughtController.updateToughtSave)
 
 
 module.exports = router 
