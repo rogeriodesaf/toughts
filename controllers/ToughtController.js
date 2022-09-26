@@ -2,8 +2,13 @@ const Tought = require('../models/Tought')
 const User = require('../models/User')
 
 module.exports = class ToughtController {
-    static showToughts(req, res) {
-        res.render('toughts/home')
+    static async showToughts(req, res) {
+        const tought = await Tought.findAll({
+            include:User,
+        })
+        const toughts = tought.map((result) => result.get({plain:true}))
+        res.render('toughts/home',{toughts})
+        console.log(toughts)
     }
 
     static async dashboard(req, res) {
@@ -58,7 +63,7 @@ module.exports = class ToughtController {
                 res.redirect('/toughts/dashboard')
             })
         } catch (error) {
-            console.log(err)
+            console.log(error)
         }
     }
     static async updateToughts(req,res){
@@ -81,6 +86,7 @@ module.exports = class ToughtController {
             })
         
         } catch (error) {
+
             console.log(error)
         }
     }

@@ -1,1 +1,13 @@
-<h1>Está funcionandooooo</h1>
+<div class="home-header">
+    <h1>Pensamentos: </h1>
+</div>
+<div class="toughts-container">
+    {{#each toughts}}
+    <figure>
+        <blockquote>
+        "{{title}}"
+        </blockquote>
+    </figure>
+    <figcaption>por <span>{{User.name}}</span> </figcaption>
+    {{/each}}
+</div>
